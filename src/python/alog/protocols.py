@@ -232,16 +232,6 @@ class LoggerProtocol(FilterProtocol):
         logger.info("Houston, we have a %s", "interesting problem", exc_info=1)
         """
 
-    if sys.version_info >= (3, 12):
-        info.__doc__ = """
-        Log 'msg % args' with severity 'INFO'.
-
-        To pass exception information, use the keyword argument exc_info with
-        a true value, e.g.
-
-        logger.info("Houston, we have a %s", "notable problem", exc_info=1)
-        """
-
     # Aligned with the typeshed type definition:
     # `*kwargs` replaced with: `exc_info`, `stack_info`, `stacklevel`, `extra`
     def warning(
@@ -354,8 +344,9 @@ class LoggerProtocol(FilterProtocol):
     # Backported to 3.11.9 and 3.12.3
     # https://github.com/python/cpython/issues/114494
     if (
-        sys.version_info >= (3, 11, 9) and sys.version_info < (3, 12) or
-        sys.version_info >= (3, 12, 3)
+        sys.version_info >= (3, 11, 9)
+        and sys.version_info < (3, 12)
+        or sys.version_info >= (3, 12, 3)
     ):
         debug.__doc__ = """
         Log 'msg % args' with severity 'DEBUG'.
