@@ -363,7 +363,7 @@ class LoggerProtocol(FilterProtocol):
         To pass exception information, use the keyword argument exc_info with
         a true value, e.g.
 
-        logger.info("Houston, we have a %s", "notable problem", exc_info=True)
+        logger.info("Houston, we have a %s", "interesting problem", exc_info=True)
         """
 
         warning.__doc__ = """
